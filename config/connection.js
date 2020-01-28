@@ -1,4 +1,3 @@
-
 var mysql = require('mysql');
 
 var PORT = process.env.PORT || 8080;
@@ -8,7 +7,7 @@ var connection = mysql.createConnection({
     port: 3306,
     user: 'root',
     password: 'rootroot',
-    database: 'burger_db'
+    database: 'burgers_db'
 });
 
 connection.connect(function (err) {
@@ -20,4 +19,4 @@ connection.connect(function (err) {
 });
 
 
-module.exports.connection = connection;
+module.exports = connection;

@@ -3,9 +3,22 @@ var router = express.Router();
 
 var burger = require("../models/burger")
 
-// Create all our routes and set up logic within those routes where required.
 
-// get 
+
+// get
+router.get("/", function (req, res) {
+    burger.selectAll(function (data) {
+        var all_ham = {
+            burger: data
+        };
+        console.log(all_ham);
+        res.render("index", allHam);
+    });
+});
+
+
+
+
 // post
 // put
 // delete
