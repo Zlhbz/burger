@@ -17,6 +17,55 @@
 
 <body>
     {{{ body }}}
+
+
+    <script>
+        $(".change-devoured").on("click", function (event) {
+            event.preventDefault();
+            console.log("clicked");
+            console.log($(this).data);
+            var id = $(this).attr("data-id");
+            var devour_status = $(this).data("data-devoured");
+            devour_status = false;
+            var newState = {
+                devoured: devour_status
+            };
+
+            $.ajax("/api/burgers/" + id, {
+                type: "PUT",
+                data: newState
+            }).then(
+                function () {
+                    console.log("changed devoured to", devour_status);
+                    // Reload the page to get the updated list
+                    location.reload();
+                }
+            );
+        });
+
+
+        $(".create-form").on("submit", function (event) {
+            // Make sure to preventDefault on a submit event.
+            event.preventDefault();
+
+            var new_burger = {
+                burger_name: $(".form-control").val().trim(),
+                devoured: false
+            };
+
+            // Send the POST request.
+            $.ajax("/api/burgers", {
+                type: "POST",
+                data: new_burger
+            }).then(
+                function () {
+                    console.log("new burger is there");
+                    // Reload the page to get the updated list
+                    location.reload();
+                }
+            );
+        });
+    </script>
 </body>
 
 </html>

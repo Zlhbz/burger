@@ -16,10 +16,20 @@ router.get("/", function (req, res) {
     });
 });
 
-
-
-
 // post
+router.post("/api/burgers", function (req, res) {
+    burger.insertOne([
+        "burger_name", "devoured"
+    ], [
+        req.body.burger_name, req.body.devoured
+    ], function (result) {
+        console.log("Looking for insertId---> " + result);
+        // Send back the ID of the new quote
+        res.json({ id: result.insertId });
+    });
+});
+
+
 // put
 // delete
 
