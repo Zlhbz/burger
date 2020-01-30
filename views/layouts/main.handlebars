@@ -22,7 +22,6 @@
     <script>
         $(".change-devoured").on("click", function (event) {
             event.preventDefault();
-            console.log("clicked");
             var id = $(this).attr("data-id");
 
             var devour_status = $(this).attr("data-devoured");
@@ -36,8 +35,6 @@
                 data: newState
             }).then(
                 function () {
-                    console.log("changed devoured to", devour_status);
-                    // Reload the page to get the updated list
                     location.reload();
                 }
             );
@@ -45,7 +42,6 @@
 
 
         $(".create-form").on("submit", function (event) {
-            // Make sure to preventDefault on a submit event.
             event.preventDefault();
 
             var new_burger = {
@@ -53,14 +49,11 @@
                 devoured: false
             };
 
-            // Send the POST request.
             $.ajax("/api/burgers", {
                 type: "POST",
                 data: new_burger
             }).then(
                 function () {
-                    console.log("new burger is there");
-                    // Reload the page to get the updated list
                     location.reload();
                 }
             );

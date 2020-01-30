@@ -10,7 +10,7 @@ router.get("/api/burgers", function (req, res) {
         var all_ham = {
             burger: data
         };
-        console.log(all_ham);
+        // console.log(all_ham);
         res.json(all_ham);
     });
 });
@@ -22,8 +22,7 @@ router.post("/api/burgers", function (req, res) {
     ], [
         req.body.burger_name, req.body.devoured
     ], function (result) {
-        console.log("Looking for insertId---> " + JSON.stringify(result));
-        // Send back the ID of the new quote
+        // console.log("Looking for insertId---> " + JSON.stringify(result));
         res.json({ id: result.insertId });
     });
 });
@@ -34,10 +33,18 @@ router.get("/", function (req, res) {
         var all_ham = {
             burger: data
         };
-        console.log(all_ham);
+        // console.log(all_ham);
         res.render("index", all_ham);
     });
 });
+
+
+// //get
+// router.get("/api/burgers/:id", function (req, res) {
+//     var condition = "id = " + req.params.id;
+
+
+// });
 
 
 // put
