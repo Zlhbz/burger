@@ -23,10 +23,10 @@
         $(".change-devoured").on("click", function (event) {
             event.preventDefault();
             console.log("clicked");
-            console.log($(this).data);
             var id = $(this).attr("data-id");
-            var devour_status = $(this).data("data-devoured");
-            devour_status = false;
+
+            var devour_status = $(this).attr("data-devoured");
+
             var newState = {
                 devoured: devour_status
             };
